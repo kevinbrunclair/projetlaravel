@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,22 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+//
 
-Route::get('/', function() {
-    return 'Homepage';
-});
+Route::get('/', HomeController::class);
 
-Route::get('/product', function() {
-    return 'ListedesProduits';
-});
+Route::get('/product', [ProductController::class, 'index']);
 
-Route::get('/product/{id}',function($id) {
-    return 'Ficheduproduit' . $id;
-});
+Route::get('/product/{id}', [ProductController::class, 'show']);
 
-Route::get('/cart', function() {
-    return 'Panier';
-});
+Route::get('/cart', CartController::class);
+
+
+
