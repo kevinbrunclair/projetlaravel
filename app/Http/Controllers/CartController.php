@@ -14,6 +14,6 @@ class CartController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return 'Panier';
+        return view('cart');
     }
 }
