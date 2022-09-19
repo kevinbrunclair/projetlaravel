@@ -4,18 +4,8 @@
 
 
 @section('content')
-<h1>Bonjour à tous voici l'id numero {{$product->id}} </h1>
-
+    <h1>Ma Homepage</h1>
+    <p>Voici mon contenu</p>
 @endsection
-
-
-
-
-
-
-
-
-
-
 
 
