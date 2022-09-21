@@ -19,7 +19,11 @@
                     <p>Discount : {{$product->discount}}</p>
                     <p class="card-text">Description</p>
                     <a href="backoffice/{{$product->id}}/edit" class="btn btn-secondary">Edit products</a>
-                    <a href="backoffice/{{$product->id}}/delete" class="btn btn-danger">Delete products</a>
+                    <form action="/backoffice/{{$product->id}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
     @endforeach

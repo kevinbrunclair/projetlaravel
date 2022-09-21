@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1>add product</h1>
+    <h1>Add product</h1>
 
     <form action="/backoffice" method="POST">
         @csrf

@@ -31,16 +31,19 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::get('/cart', [CartController::class, 'index']);
 
 
-// BACKOFF
+// BACKOFFICE ROUTES
 
-Route::get('/backoffice', [BackofficeController::class, 'index']);
+Route::get('/backoffice', [BackofficeController::class, 'index'])->name('backoffice');
 
-Route::get('/backoffice/{id}/edit', [BackofficeController::class, 'editproducts']);
 
-Route::get('/backoffice/{id}/delete', [BackofficeController::class, 'deleteproducts']);
+Route::delete('/backoffice/{id}', [BackofficeController::class, 'destroy'])->name('backoffice-delete');
 
-Route::get('/backoffice/add', [BackofficeController::class, 'addproducts']);
-Route::post('/backoffice', [BackofficeController::class, 'create']);
+
+Route::get('/backoffice/add', [BackofficeController::class, 'create'])->name('backoffice-add');
+Route::post('/backoffice', [BackofficeController::class, 'store'])->name('backoffice-store');
+
+Route::get('/backoffice/{id}/edit', [BackofficeController::class, 'edit'])->name('backoffice-edit');
+Route::put('/backoffice/{id}', [BackofficeController::class, 'update'])->name('backoffice-update');
 
 
 
