@@ -15,7 +15,7 @@ class BackofficeController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index() // Afficher tous les produits
     {
         $products = Product::orderBy('name')->get();
         return view('backoffice', ['products' => $products,]);
@@ -26,7 +26,7 @@ class BackofficeController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create()
+    public function create() // Formulaire d'ajout de produit
     {
         return view('/backoffice-add');
     }
@@ -38,9 +38,7 @@ class BackofficeController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    // pour creer un produit
-
-    public function store(Request $request)
+    public function store(Request $request) // Créer un produit en db
     {
         $product = new Product();
         $product->name = $request->input('name');
@@ -57,7 +55,7 @@ class BackofficeController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) // Afficher un produit
     {
         //
     }
@@ -68,7 +66,7 @@ class BackofficeController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit($id) // Formulaire d'édition de produit
     {
         $product = Product::find($id);
         return view('/backoffice-edit', ['product' => $product]);
@@ -81,7 +79,7 @@ class BackofficeController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function destroy($id)
+    public function destroy($id) // Supprimer un produit en DB
     {
         $product = Product::find($id);
         $product->delete();
@@ -95,7 +93,7 @@ class BackofficeController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) // Mettre à jour un produit en DB
     {
         $product = Product::find($id);
         $product->name = $request->input('name');
@@ -105,6 +103,5 @@ class BackofficeController extends Controller
         $product->save();
         return redirect()->route('backoffice');
     }
-
 
 }

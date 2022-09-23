@@ -18,7 +18,7 @@
                     <p>Available : {{$product->available}}</p>
                     <p>Discount : {{$product->discount}}</p>
                     <p class="card-text">Description</p>
-                    <a href="backoffice/{{$product->id}}/edit" class="btn btn-secondary">Edit products</a>
+                    <a href="backoffice/{{$product->id}}/edit" class="btn btn-primary">Edit products</a>
                     <form action="/backoffice/{{$product->id}}" method="POST">
                         @csrf
                         @method('DELETE')

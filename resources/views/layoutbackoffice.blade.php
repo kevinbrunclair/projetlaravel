@@ -43,7 +43,7 @@
                 <a class="nav-link" href="{{route('product-list')}}">Products</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('product-price')}}">Price of Products</a>
+                <a class="nav-link" href="">Price of Products</a>
             </li>
             <form class="form-inline my-2 my-lg-0">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

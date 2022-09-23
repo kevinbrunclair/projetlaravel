@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class Categorycontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
-    public function index() // Afficher tous les produits
+    public function index()
     {
-        $products = Product::orderBy('name')->get();
-        return view('product-list', ['products' => $products,]);
+        $categories = Category::all();
+        return view('category-list', ['categories' => $categories]);
     }
 
     /**
@@ -23,7 +23,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() // Formulaire d'ajout de produit
+    public function create()
     {
         //
     }
@@ -34,7 +34,7 @@ class ProductController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) // Créer un produit en db
+    public function store(Request $request)
     {
         //
     }
@@ -43,12 +43,11 @@ class ProductController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
-    public function show($id) // Afficher un produit
+    public function show($id)
     {
-        $product = Product::find($id);
-        return view('product-details', ['product' => $product,]);
+        //
     }
 
     /**
@@ -57,7 +56,7 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) // Formulaire d'édition de produit
+    public function edit($id)
     {
         //
     }
@@ -69,7 +68,7 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) // Mettre à jour un produit en db
+    public function update(Request $request, $id)
     {
         //
     }
@@ -80,10 +79,8 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy() // Supprimer un produit en db
+    public function destroy($id)
     {
         //
     }
-
-
 }
