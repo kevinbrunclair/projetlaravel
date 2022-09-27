@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\product;
 use Illuminate\Http\Request;
-
 
 class BackofficeController extends Controller
 {
@@ -38,13 +38,15 @@ class BackofficeController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function store(Request $request) // Créer un produit en db
+    public function store(StorePostRequest $request) // Créer un produit en db
     {
         $product = new Product();
+
         $product->name = $request->input('name');
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->image = $request->input('image');
+        $product->quantity = $request->input('quantity');
         $product->save();
         return redirect()->route('backoffice');
     }

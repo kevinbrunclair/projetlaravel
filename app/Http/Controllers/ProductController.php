@@ -32,11 +32,16 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function store(Request $request) // Créer un produit en db
+    public function store(Request $request)
     {
-        //
+        $product = Product::find($request->input('product_id'));
+        $request->validate([
+            'quantity' => 'required|integer|min:2|max:' . $product->quantity,
+        ]);
+
+        return view('/cart');
     }
 
     /**
@@ -45,10 +50,11 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id) // Afficher un produit
+    public function show($id, Request $request) // Afficher un produit
     {
         $product = Product::find($id);
-        return view('product-details', ['product' => $product,]);
+        $quantity = $request->input('quantity');
+        return view('product-details', ['product' => $product, 'quantity' => $quantity]);
     }
 
     /**

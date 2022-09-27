@@ -11,10 +11,16 @@
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+            @error('name')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
         <div class="form-group">
             <label for="price">Price</label>
             <input type="text" class="form-control" id="price" name="price" placeholder="Enter price">
+            @error('price')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
         <div class="form-group">
             <label for="image">Image</label>
